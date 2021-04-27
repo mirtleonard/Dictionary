@@ -1,0 +1,62 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container text-center row">
+
+    <div class="container col">
+      <h3>Add a new word: </h3>
+      <input type="text" id="addWord">
+      <button onclick="addWord()" class="btn btn-success">add</button>
+    </div>
+
+    <div class="container col">
+      <h3> Search a word: </h3>
+      <input type="search" id="searchWord">
+      <button onclick="searchWord()" class="btn btn-success">search</button>
+    </div>
+
+    <div class="modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  var words = [], word;
+  function addWord() {
+    words.push($("#addWord").val());
+  }
+  function equal(x) {
+    return word == x;
+  }
+  function searchWord() {
+    word = $("#searchWord").val();
+    if (words.find(equal)) {
+      $(".modal-body").text("The word is in dictionary.");
+      $(".modal-header").text("Word found!");
+    } else {
+      $(".modal-body").text("The word is not in dictionary.");
+      $(".modal-header").text("Word not found!");
+    }
+    $(".modal").modal();
+  }
+  </script>
+
+</body>
+</html>
